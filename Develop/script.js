@@ -17,28 +17,24 @@ function generatePassword() {
   var charArray = [] || charArray;
   var password = '';
   var charPresent = false;
-  // letterCase===null && specChar===null && numeric===null
 
+  //while loop to get password length variable and verify input is a number and not a word. 
   while (len === null || len < 8 || len > 128) {
     var len = prompt('Enter password length. Must be inclusively between 8 and 128 characters');
     len = parseInt(len);
-    
-    console.log(len);
-    console.log(typeof len);
-    console.log(Object.is(len, NaN));
-    
+
     if (len < 8 || len > 128 || Object.is(len, NaN)) {
-      len=0;
+      len = 0;
       alert('That value is not valid. Enter valid length');
-      
+
     }
   };
   // end of len loop
 
   //While loop to obtain password length and character types.
   while (lowCase === null && upCase === null && specChar === null && numeric === null) {
-    
-    
+
+
     //prompt for type input
     var characterTypes = prompt('What type of characters do you want in your password?\n lc = lowercase\n uc = uppercase\n sc = special characters\n num = numeric\n Seperate types with comma. ex: lc, uc')
     characterTypes = characterTypes.toLowerCase(); //change strings to lowercase and split into array
@@ -51,7 +47,7 @@ function generatePassword() {
     };
     console.log(characterTypes);
     //conditionals to set boolean values for letterCase, specChar, and numeric.
-
+    //conditionals also push character type arrays into CharArray.
     if (characterTypes.indexOf('uc') !== -1) {
       upCase = true;
       charArray.push(arrayUC);
@@ -69,7 +65,7 @@ function generatePassword() {
       charArray.push(arrayNum);
     }
 
-
+    //Check to make sure that user input has at least one valid character type.
     if (lowCase === null && upCase === null && specChar === null && numeric === null) {
       alert('No valid character type input. ');
     };
@@ -85,13 +81,13 @@ function generatePassword() {
     password = password + charArray[ind][Math.floor(Math.random() * charArray[ind].length)];
 
   };
-  
+
   //Make sure all selected character types are present.
-  
+
   if (upCase === true) {
     for (let i = 0; i < password.length; i++) {
       if (arrayLC.indexOf(password[i]) >= 0) {
-        charPresent=true;
+        charPresent = true;
         break;
       }
     }
