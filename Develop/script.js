@@ -84,14 +84,54 @@ function generatePassword() {
 
   //Make sure all selected character types are present.
 
+  do{
+  // If uppercase is selected with uc.
   if (upCase === true) {
+    for (let i = 0; i < password.length; i++) {
+      if (arrayUC.indexOf(password[i]) >= 0) {
+        charPresent = true;
+        break;
+      }
+    }
+  };
+  //If lowercase is selected with lc.
+  if (lowCase === true) {
     for (let i = 0; i < password.length; i++) {
       if (arrayLC.indexOf(password[i]) >= 0) {
         charPresent = true;
         break;
       }
     }
-  }
+  };
+  //If special characters are selected with sc.
+  if (specChar === true) {
+    for (let i = 0; i < password.length; i++) {
+      if (arraySC.indexOf(password[i]) >= 0) {
+        charPresent = true;
+        break;
+      }
+    }
+  };
+  //If numeric characters are selected with sc.
+  if (numeric === true) {
+    for (let i = 0; i < password.length; i++) {
+      if (arrayNum.indexOf(password[i]) >= 0) {
+        charPresent = true;
+        break;
+      }
+    }
+  };
+  //Conditional setting password ="" if a selected character type is not present in the password
+  // and thereby does not meet requirments.
+  if(charPresent===false){
+    password="";
+  };
+
+  }while(password==="");
+
+
+
+
   console.log(charPresent)
   alert('your password is: ' + password);
 
