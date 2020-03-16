@@ -76,7 +76,7 @@ function generatePassword() {
 
   // for loop for password construction using string concat and bracket notation
 
-  for (let i = 1; i < len; i++) {
+  for (let i = 0; i < len; i++) {
     let ind = Math.floor(Math.random() * charArray.length);
     password = password + charArray[ind][Math.floor(Math.random() * charArray[ind].length)];
 
@@ -132,8 +132,8 @@ function generatePassword() {
 
 
 
-  console.log(charPresent)
-  alert('your password is: ' + password);
+  return password;
+  //alert('your password is: ' + password);
 
 
 
