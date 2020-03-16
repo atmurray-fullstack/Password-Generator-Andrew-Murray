@@ -6,28 +6,39 @@ function generatePassword() {
   const arrayLC = alphabetString.split("");
   const arrayUC = upperCaseString.split("");
   const arraySC = ['!', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~'];
-  const arrayNum = ['1','2','3','4','5','6','7','8','9']
-    
+  const arrayNum = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+
   //variables that are mutable.
   var len = null;
   var upCase = null;
   var lowCase = null;
   var specChar = null;
   var numeric = null;
-  var charArray= []||charArray;
-  var password='';
+  var charArray = [] || charArray;
+  var password = '';
+  var charPresent = false;
   // letterCase===null && specChar===null && numeric===null
 
   while (len === null || len < 8 || len > 128) {
     var len = prompt('Enter password length. Must be inclusively between 8 and 128 characters');
-    if (len < 8 || len > 128) {
-      prompt('That value is not valid. Enter valid length');
+    len = parseInt(len);
+    
+    console.log(len);
+    console.log(typeof len);
+    console.log(Object.is(len, NaN));
+    
+    if (len < 8 || len > 128 || Object.is(len, NaN)) {
+      len=0;
+      alert('That value is not valid. Enter valid length');
+      
     }
   };
   // end of len loop
 
   //While loop to obtain password length and character types.
   while (lowCase === null && upCase === null && specChar === null && numeric === null) {
+    
+    
     //prompt for type input
     var characterTypes = prompt('What type of characters do you want in your password?\n lc = lowercase\n uc = uppercase\n sc = special characters\n num = numeric\n Seperate types with comma. ex: lc, uc')
     characterTypes = characterTypes.toLowerCase(); //change strings to lowercase and split into array
@@ -57,30 +68,41 @@ function generatePassword() {
       numeric = true;
       charArray.push(arrayNum);
     }
+
+
     if (lowCase === null && upCase === null && specChar === null && numeric === null) {
-      alert('No valid character type input. ')
-    }
-    console.log(charArray);
-    console.log(upCase);
-    console.log(lowCase);
-    console.log(numeric);
-    console.log(specChar);
+      alert('No valid character type input. ');
+    };
+
 
   }; // End of input while loop.
 
 
   // for loop for password construction using string concat and bracket notation
-   for(let i = 1; i < len; i++){
-    let ind = Math.floor(Math.random()*charArray.length);
-    password =  password + charArray[ind][Math.floor(Math.random()*charArray[ind].length)];
 
-   }
-   alert('your password is: '+password)
-  console.log(password)
-   
+  for (let i = 1; i < len; i++) {
+    let ind = Math.floor(Math.random() * charArray.length);
+    password = password + charArray[ind][Math.floor(Math.random() * charArray[ind].length)];
+
+  };
   
+  //Make sure all selected character types are present.
+  
+  if (upCase === true) {
+    for (let i = 0; i < password.length; i++) {
+      if (arrayLC.indexOf(password[i]) >= 0) {
+        charPresent=true;
+        break;
+      }
+    }
+  }
+  console.log(charPresent)
+  alert('your password is: ' + password);
+
+
+
   // console.log(charArray[ind][Math.floor(Math.random()*charArray[ind].length)]);
-  
+
 
 
 }  //end of function
