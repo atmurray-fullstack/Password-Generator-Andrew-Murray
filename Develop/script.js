@@ -1,6 +1,6 @@
 function generatePassword() {
 
-  //function variables that are constant.
+  //variables that are constant.
   const alphabetString = 'abcdefghijklmnopqrstuvwxyz';
   const upperCaseString = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const arrayLC = alphabetString.split("");
@@ -8,13 +8,16 @@ function generatePassword() {
   const arrayUC = upperCaseString.split("");
   console.log(arrayUC);
   const arraySC = ['!', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~'];
-
-  // function variables that are mutable.
+  const arrayNum = ['1','2','3','4','5','6','7','8','9']
+    
+  //variables that are mutable.
   var len = null;
   var upCase = null;
   var lowCase = null;
   var specChar = null;
   var numeric = null;
+  var charArray= []||charArray;
+  var password = null;
   // letterCase===null && specChar===null && numeric===null
 
   while (len === null || len < 8 || len > 128) {
@@ -42,25 +45,40 @@ function generatePassword() {
 
     if (characterTypes.indexOf('uc') !== -1) {
       upCase = true;
+      charArray.push(arrayUC);
     }
     if (characterTypes.indexOf('lc') !== -1) {
       lowCase = true;
+      charArray.push(arrayLC);
     }
     if (characterTypes.indexOf('sc') !== -1) {
       specChar = true;
+      charArray.push(arraySC);
     }
     if (characterTypes.indexOf('num') !== -1) {
       numeric = true;
+      charArray.push(arrayNum);
     }
     if (lowCase === null && upCase === null && specChar === null && numeric === null) {
       alert('No valid character type input. ')
     }
+    console.log(charArray);
     console.log(upCase);
     console.log(lowCase);
     console.log(numeric);
     console.log(specChar);
 
-  };
+  }; // End of input while loop.
+   for(let i = 1; i < len; i++){
+    let ind = Math.floor(Math.random()*charArray.length);
+
+
+   }
+  
+   
+  
+  // console.log(charArray[ind][Math.floor(Math.random()*charArray[ind].length)]);
+  
 
 
 }  //end of function
