@@ -4,9 +4,7 @@ function generatePassword() {
   const alphabetString = 'abcdefghijklmnopqrstuvwxyz';
   const upperCaseString = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const arrayLC = alphabetString.split("");
-  console.log(arrayLC);
   const arrayUC = upperCaseString.split("");
-  console.log(arrayUC);
   const arraySC = ['!', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~'];
   const arrayNum = ['1','2','3','4','5','6','7','8','9']
     
@@ -77,6 +75,7 @@ function generatePassword() {
     password =  password + charArray[ind][Math.floor(Math.random()*charArray[ind].length)];
 
    }
+   alert('your password is: '+password)
   console.log(password)
    
   
