@@ -17,7 +17,7 @@ function generatePassword() {
   var specChar = null;
   var numeric = null;
   var charArray= []||charArray;
-  var password = null;
+  var password='';
   // letterCase===null && specChar===null && numeric===null
 
   while (len === null || len < 8 || len > 128) {
@@ -69,12 +69,15 @@ function generatePassword() {
     console.log(specChar);
 
   }; // End of input while loop.
+
+
+  // for loop for password construction using string concat and bracket notation
    for(let i = 1; i < len; i++){
     let ind = Math.floor(Math.random()*charArray.length);
-
+    password =  password + charArray[ind][Math.floor(Math.random()*charArray[ind].length)];
 
    }
-  
+  console.log(password)
    
   
   // console.log(charArray[ind][Math.floor(Math.random()*charArray[ind].length)]);
